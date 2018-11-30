@@ -6,10 +6,10 @@ package AffineCipher;
  * This can be accomplished by making a=1 or b=0, respectively
  */
 
-import HillCipher.HillEncipher;
+import HillCipher.Hill;
+import HillCipher.HillEncrypt;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -92,6 +92,8 @@ public class LetterShifter {
 
 
     public static void main(String[] args){
+        HillEncrypt he = new HillEncrypt();
+        Hill hill = new Hill();
         Scanner dataIn = new Scanner(System.in);
         System.out.println("Enter input as follows:");
         System.out.println("Please input a on the first line and b on the second line (shift is ax + b)");
@@ -99,15 +101,25 @@ public class LetterShifter {
         System.out.println("Note: It is not necessary to use punctuation.");
         System.out.println("Input \"endOfMessage\" on its own line to finish the input.");
 
+        System.out.println("Enter Value for a:");
         int a = dataIn.nextInt();
+        System.out.println("Enter Value for b:");
         int b = dataIn.nextInt();
 
         String message = "";
+        System.out.println("Enter plain text followed by 'endOfMessage': ");
         String input = dataIn.nextLine();
 
         while (!input.equals("endOfMessage")){
             message += input;
             input = dataIn.nextLine();
+        }
+
+        System.out.println("Enter the key for the matrix");
+        String key = dataIn.next();
+        while(!hill.check(key, 2)){
+            System.out.println("Invalid key!!! Key is not invertible because determinant=0... Please enter again");
+            key = dataIn.nextLine();
         }
         dataIn.close();
         LetterShifter shifter = new LetterShifter(a, b, message);
@@ -122,6 +134,15 @@ public class LetterShifter {
             System.out.println(e);
         }
 
+        try{
+            File matrixData = new File("matrixData.txt");
+            PrintWriter matrixWrite = new PrintWriter(matrixData);
+            matrixWrite.print(key.toUpperCase());
+            matrixWrite.close();
+            he.runEncryption();
+        }catch(Exception e) {
+            System.out.println(e);
+        }
 
     }
 }
