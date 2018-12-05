@@ -103,8 +103,21 @@ public class LetterShifter {
 
         System.out.println("Enter Value for a:");
         int a = dataIn.nextInt();
+        File filea = new File("a.txt");
         System.out.println("Enter Value for b:");
         int b = dataIn.nextInt();
+        File fileb = new File("b.txt");
+
+        try{
+            PrintWriter printa = new PrintWriter(filea);
+            PrintWriter printb = new PrintWriter(fileb);
+            printa.print(a);
+            printb.print(b);
+            printa.close();
+            printb.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
 
         String message = "";
         System.out.println("Enter plain text followed by 'endOfMessage': ");
