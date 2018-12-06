@@ -230,7 +230,7 @@ public class Hill {
                 invkey += (char) (inv[i][j] + 97);
             }
         }
-        System.out.print(invkey);
+        System.out.println(invkey);
         return invkey;
     }
 }

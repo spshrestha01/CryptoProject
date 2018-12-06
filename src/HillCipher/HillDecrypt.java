@@ -1,5 +1,7 @@
 package HillCipher;
 
+import AffineCipher.AffineDecrypt;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,5 +19,8 @@ public class HillDecrypt {
         }catch(Exception e){
             System.out.println(e);
         }
+
+        AffineDecrypt ad = new AffineDecrypt();
+        ad.decrypt();
     }
 }
