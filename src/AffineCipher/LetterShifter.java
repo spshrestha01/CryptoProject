@@ -79,7 +79,7 @@ public class LetterShifter {
         int letters = 0; // variable to keep track of how many letters are in the current word
         for (int index = 0; index < coded.length(); index++){
             if (letters == 5){
-                output.append(' ');
+                output.append("");
                 letters = 0;
             }
             if (coded.charAt(index) >= 65 && coded.charAt(index) <= 90){
