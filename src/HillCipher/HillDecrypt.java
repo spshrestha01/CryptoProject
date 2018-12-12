@@ -18,7 +18,6 @@ public class HillDecrypt {
         }catch(Exception e){
             System.out.println(e);
         }
-
         AffineDecrypt ad = new AffineDecrypt();
         ad.decrypt();
     }

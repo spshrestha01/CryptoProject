@@ -32,7 +32,7 @@ public class Hill {
         } else {
             int s = (int) sq;
             if (check(key, s)) {
-                System.out.println("Result:");
+                System.out.println("Hill Cipher Result:");
                 String result = divide(line, s);
                 String invKey = cofact(keymatrix, s);
                 keys[0] = result;
@@ -99,7 +99,7 @@ public class Hill {
         for (int i = 0; i < len; i++) {
             result += (char) (resultmatrix[i] + 97);
         }
-        System.out.print(result);
+        System.out.print(result.toUpperCase());
         return result;
     }
 
@@ -200,7 +200,7 @@ public class Hill {
                 inv[i][j] %= 26;
             }
         }
-        System.out.println("\nInverse key:");
+        System.out.println("\nInverse key Matrix:");
         String key = matrixtoinvkey(inv, r);
         return key;
     }

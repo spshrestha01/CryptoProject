@@ -19,13 +19,13 @@ public class LetterShifter {
     private String messageToCode;
     // shifts all letters in messageToCode by ax + b
 
-    public LetterShifter(int anA, int aB, String aMessage){
+    private LetterShifter(int anA, int aB, String aMessage){
         a = anA;
         b = aB;
         messageToCode = aMessage.toUpperCase(); // case insensitive
     }
 
-    public String shiftMessage(){
+    private String shiftMessage(){
         if (!isRelativePrime()){
             return "Message cannot be shifted by the given a value.";
         }
@@ -46,9 +46,8 @@ public class LetterShifter {
     private boolean isRelativePrime(){
         if ((a == 13) || ((a % 2) == 0)){
             return false;
-        }else{
-            return true;
         }
+        return true;
     }
 
     private char shiftLetter(char toShift){
@@ -108,6 +107,7 @@ public class LetterShifter {
         int b = dataIn.nextInt();
         File fileb = new File("b.txt");
 
+
         try{
             PrintWriter printa = new PrintWriter(filea);
             PrintWriter printb = new PrintWriter(fileb);
@@ -137,8 +137,9 @@ public class LetterShifter {
         dataIn.close();
         LetterShifter shifter = new LetterShifter(a, b, message);
         String text = shifter.shiftMessage();
-        System.out.println(text);
         File f = new File("textToEncipher.txt");
+        System.out.println("Affine Cipher Encryption Result:" );
+        System.out.println(text.toUpperCase());
         try{
             PrintWriter dataOut = new PrintWriter(f);
             dataOut.print(text);
